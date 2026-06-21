@@ -1,0 +1,32 @@
+[
+ {
+  "id": 1,
+  "name": "Alice's Antiques",
+  "email": "alice@example.com",
+  "img": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=400&q=80"
+},
+  {
+    "id": 2,
+    "name": "Bob's Books",
+    "email": "bob@example.com",
+    "img": "https://randomuser.me/api/portraits/men/32.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Cathy's Clothing",
+    "email": "cathy@example.com",
+    "img": "https://randomuser.me/api/portraits/women/44.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Dave's Devices",
+    "email": "dave@example.com",
+    "img": "https://randomuser.me/api/portraits/men/76.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Emma's Essentials",
+    "email": "emma@example.com",
+    "img": "https://randomuser.me/api/portraits/women/68.jpg"
+  }
+]

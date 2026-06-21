@@ -1,0 +1,100 @@
+/* Full page wrapper with gradient background */
+.explore-wrapper {
+  width: 100vw;
+  min-height: 100vh;
+  padding: 120px 20px;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #f5faff, #ffffff);
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* Main title */
+.main-heading {
+  text-align: center;
+  margin-bottom: 60px;
+  color: #007bff;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Each section card */
+.explore-section {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 60px 40px;
+  border-radius: 16px;
+  margin: 100px auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 900px;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Fade-in when visible */
+.explore-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover effect */
+.explore-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Section heading */
+.explore-section h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+/* Bullet list */
+.explore-section ul {
+  padding-left: 20px;
+}
+
+.explore-section li {
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: #444;
+  list-style: none;
+  position: relative;
+  padding-left: 30px;
+}
+
+/* Custom bullet */
+.explore-section li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #007bff;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .explore-section {
+    padding: 40px 20px;
+    margin: 40px 0;
+  }
+
+  .explore-section h2 {
+    font-size: 24px;
+  }
+
+  .explore-section li {
+    font-size: 16px;
+  }
+
+  .main-heading {
+    font-size: 30px;
+  }
+}

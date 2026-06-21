@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "687537c9d7afa48be61e0a62",
+    "shopId": 3,
+    "id": 301,
+    "name": "Designer Dress",
+    "price": 250,
+    "imgUrl": "designer_dress.jpg"
+  },
+  {
+    "_id": "687537c9d7afa48be61e0a63",
+    "shopId": 3,
+    "id": 302,
+    "name": "Leather Jacket",
+    "price": 400,
+    "imgUrl": "leather_jacket.jpg"
+  },
+  {
+    "_id": "687537c9d7afa48be61e0a64",
+    "shopId": 4,
+    "id": 401,
+    "name": "Smartphone X",
+    "price": 15000,
+    "imgUrl": "smartphone_x.jpg"
+  },
+  {
+    "_id": "687537c9d7afa48be61e0a65",
+    "shopId": 4,
+    "id": 402,
+    "name": "Bluetooth Speaker",
+    "price": 2000,
+    "imgUrl": "bluetooth_speaker.jpg"
+  },
+  {
+    "_id": "687537c9d7afa48be61e0a66",
+    "shopId": 5,
+    "id": 501,
+    "name": "Shampoo Pack",
+    "price": 180,
+    "imgUrl": "shampoo_pack.jpg"
+  },
+  {
+    "_id": "687537c9d7afa48be61e0a67",
+    "shopId": 5,
+    "id": 502,
+    "name": "Toothbrush Set",
+    "price": 90,
+    "imgUrl": "toothbrush_set.jpg"
+  }
+]
