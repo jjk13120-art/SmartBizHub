@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import shopBg from './shopc.jpg'; // Background image
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "./config";
 
 export default function CreateShop() {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ export default function CreateShop() {
       Object.keys(shop).forEach(key => formData.append(key, shop[key]));
       if (file) formData.append("img", file);
 
-      const res = await axios.post("http://localhost:3001/createshop", formData, {
+      const res = await axios.post(`${API_BASE_URL}/createshop`, formData, {
         withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" }
       });

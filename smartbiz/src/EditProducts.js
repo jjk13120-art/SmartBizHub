@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "./config";
 
 export default function EditProducts() {
   const { id } = useParams(); // shopId
@@ -9,7 +10,7 @@ export default function EditProducts() {
   const [formData, setFormData] = useState({ name: "", price: "", image: null });
 
   useEffect(() => {
-    fetch("http://localhost:3001/inventory", { credentials: "include" })
+    fetch(`${API_BASE_URL}/inventory`, { credentials: "include" })
       .then(res => res.json())
       .then(data => {
         if (data.productsByShop[id]) {
@@ -40,7 +41,7 @@ export default function EditProducts() {
     form.append("price", formData.price);
     if (formData.image) form.append("image", formData.image);
 
-    fetch(`http://localhost:3001/edit-product/${id}/${editingProduct.id}`, {
+    fetch(`${API_BASE_URL}/edit-product/${id}/${editingProduct.id}`, {
       method: "PUT",
       body: form,
       credentials: "include",
@@ -139,7 +140,7 @@ export default function EditProducts() {
               }}
             >
               <img
-                src={`http://localhost:3001/media/${p.imgUrl}`}
+                src={`${API_BASE_URL}/media/${p.imgUrl}`}
                 alt={p.name}
                 style={{ width: "100%", maxHeight: "150px", objectFit: "cover" }}
               />

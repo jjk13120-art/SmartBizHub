@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./ShopPage.css";
+import { API_BASE_URL } from "./config";
 
 export default function ShopPage() {
   const { id } = useParams();
@@ -10,7 +11,7 @@ export default function ShopPage() {
   const [bill, setBill] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3001/inventory", { credentials: "include" })
+    fetch(`${API_BASE_URL}/inventory`, { credentials: "include" })
       .then(res => res.json())
       .then(setData)
       .catch(err => console.error("Failed to load inventory:", err));
@@ -45,7 +46,7 @@ export default function ShopPage() {
     if (items.length === 0) return alert("Cart is empty!");
 
     try {
-      const res = await fetch("http://localhost:3001/purchase", {
+      const res = await fetch(`${API_BASE_URL}/purchase`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -87,7 +88,7 @@ export default function ShopPage() {
         {products.map(prod => (
           <div key={prod.id} className="product-card">
            <img
-  src={`http://localhost:3001/media/${prod.imgUrl}`}
+  src={`${API_BASE_URL}/media/${prod.imgUrl}`}
   alt={prod.name}
   className="product-image"
   onError={(e) => {

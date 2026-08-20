@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import addproBg from "./addpro.jpg"; // ✅ Import image from src folder
+import { API_BASE_URL } from "./config";
 
 export default function AddProducts() {
   const { shopId } = useParams();
@@ -31,7 +32,7 @@ export default function AddProducts() {
     formData.append("image", image);
 
     try {
-      const res = await fetch("http://localhost:3001/upload-product-img", {
+      const res = await fetch(`${API_BASE_URL}/upload-product-img`, {
         method: "POST",
         credentials: "include",
         body: formData,

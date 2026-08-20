@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import a from './login.jpg';
+import { API_BASE_URL } from "./config";
 
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -25,7 +26,7 @@ export default function Login() {
     }
 
     try {
-      const res = await axios.post("http://localhost:3001/login", form, {
+      const res = await axios.post(`${API_BASE_URL}/login`, form, {
         withCredentials: true,
       });
 

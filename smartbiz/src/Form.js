@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import a from './signup.jpg';
+import { API_BASE_URL } from "./config";
 
 export default function Form() {
   const [form, setForm] = useState({
@@ -36,7 +37,7 @@ export default function Form() {
     }
 
     try {
-      const res = await axios.post("http://localhost:3001/signupform", form, {
+      const res = await axios.post(`${API_BASE_URL}/signupform`, form, {
         withCredentials: true,
         headers: { "Content-Type": "application/json" }
       });

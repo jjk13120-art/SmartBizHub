@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "./config";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -51,11 +52,11 @@ export default function Profile() {
       fetchShopByEmail(emailCookie);
       fetchPurchaseHistory();
 
-      axios.get(`http://localhost:3001/getuser/${emailCookie}`)
+      axios.get(`${API_BASE_URL}/getuser/${emailCookie}`)
         .then(res => {
          if (res.data.success && res.data.user) {
   if (res.data.user.profileImg) {
-    setProfileImg(`http://localhost:3001/${res.data.user.profileImg}`);
+    setProfileImg(`${API_BASE_URL}/${res.data.user.profileImg}`);
   }
   if (res.data.user.address) {
     setAddress(res.data.user.address);
@@ -73,7 +74,7 @@ export default function Profile() {
     formData.append("image", event.target.files[0]);
 
     try {
-      const res = await axios.post("http://localhost:3001/upload-profile-img", formData, {
+      const res = await axios.post(`${API_BASE_URL}/upload-profile-img`, formData, {
         withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" }
       });
@@ -89,7 +90,7 @@ export default function Profile() {
 
   const fetchPurchaseHistory = async () => {
     try {
-      const res = await axios.get('http://localhost:3001/mypurchases', {
+      const res = await axios.get(`${API_BASE_URL}/mypurchases`, {
         withCredentials: true,
       });
       if (res.data.success) {
@@ -102,7 +103,7 @@ export default function Profile() {
 
   const fetchShopByEmail = async (email) => {
     try {
-      const res = await axios.get(`http://localhost:3001/getshopbyemail/${email}`);
+      const res = await axios.get(`${API_BASE_URL}/getshopbyemail/${email}`);
       if (res.data.success && res.data.shop) {
         setShop(res.data.shop);
       }
@@ -121,7 +122,7 @@ export default function Profile() {
     const formData = new FormData();
     formData.append("address", address);
 
-    await axios.post("http://localhost:3001/upload-profile-img", formData, {
+    await axios.post(`${API_BASE_URL}/upload-profile-img`, formData, {
       withCredentials: true
     });
 
@@ -212,7 +213,7 @@ export default function Profile() {
         <hr />
         <div style={{ textAlign: 'center', marginBottom: '20px' }}>
           <img
-              src={profileImg || 'http://localhost:3001/profile/default.png'}
+              src={profileImg || `${API_BASE_URL}/profile/default.png`}
             alt="Profile"
             style={{
               width: 120,

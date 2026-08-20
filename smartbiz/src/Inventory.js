@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Inventory.css";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "./config";
 
 export default function Inventory() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ export default function Inventory() {
 
   // fetch user info (cookies)
   useEffect(() => {
-    fetch("http://localhost:3001/mypurchases", { credentials: "include" })
+    fetch(`${API_BASE_URL}/mypurchases`, { credentials: "include" })
       .then((res) => {
         if (res.status === 401) return null;
         return res.json();
@@ -36,7 +37,7 @@ export default function Inventory() {
 
   // fetch inventory data
   useEffect(() => {
-    fetch("http://localhost:3001/inventory", { credentials: "include" })
+    fetch(`${API_BASE_URL}/inventory`, { credentials: "include" })
       .then((res) => res.json())
       .then(setData)
       .catch((e) => console.error("Fetch error:", e));
@@ -72,7 +73,7 @@ export default function Inventory() {
       quantity: item.quantity,
     }));
 
-    fetch(`http://localhost:3001/purchase?method=${method}`, {
+    fetch(`${API_BASE_URL}/purchase?method=${method}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -224,12 +225,12 @@ export default function Inventory() {
                   return (
                     <div key={p.id} className="product-card">
                       <a
-                        href={`http://localhost:3001/media/${p.imgUrl}`}
+                        href={`${API_BASE_URL}/media/${p.imgUrl}`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <img
-                          src={`http://localhost:3001/media/${p.imgUrl}`}
+                          src={`${API_BASE_URL}/media/${p.imgUrl}`}
                           alt={p.name}
                         />
                       </a>

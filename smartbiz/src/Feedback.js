@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "./config";
 
 export default function Feedback() {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -16,7 +17,7 @@ export default function Feedback() {
 
   const fetchFeedbacks = async () => {
     try {
-      const res = await axios.get("http://localhost:3001/get-feedbacks");
+      const res = await axios.get(`${API_BASE_URL}/get-feedbacks`);
       if (res.data.success) setFeedbacks(res.data.feedbacks);
     } catch (err) {
       console.error("Error loading feedbacks:", err);
@@ -47,7 +48,7 @@ export default function Feedback() {
     }
 
     try {
-      await axios.post("http://localhost:3001/submit-feedback", data);
+      await axios.post(`${API_BASE_URL}/submit-feedback`, data);
       setForm({ name: "", message: "", image: null });
       fetchFeedbacks();
     } catch (err) {
@@ -123,12 +124,12 @@ export default function Feedback() {
           </p>
           {(fb.imageUrl || fb.img) && (
             <a
-              href={`http://localhost:3001/${fb.imageUrl || fb.img}`}
+              href={`${API_BASE_URL}/${fb.imageUrl || fb.img}`}
               target="_blank"
               rel="noopener noreferrer"
             >
               <img
-                src={`http://localhost:3001/${fb.imageUrl || fb.img}`}
+                src={`${API_BASE_URL}/${fb.imageUrl || fb.img}`}
                 alt="feedback"
                 style={{
                   maxWidth: "100%",

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "./config";
 
 export default function DeleteProducts() {
   const { id } = useParams(); // shopId from route
@@ -9,7 +10,7 @@ export default function DeleteProducts() {
 
   useEffect(() => {
     // Fetch inventory and filter products for this shop
-    fetch("http://localhost:3001/inventory", { credentials: "include" })
+    fetch(`${API_BASE_URL}/inventory`, { credentials: "include" })
       .then((res) => res.json())
       .then((data) => {
         if (data && data.productsByShop[id]) {
@@ -24,7 +25,7 @@ export default function DeleteProducts() {
   const handleDelete = (productId) => {
     if (!window.confirm("Are you sure you want to delete this product?")) return;
 
-    fetch(`http://localhost:3001/delete-product/${id}/${productId}`, {
+    fetch(`${API_BASE_URL}/delete-product/${id}/${productId}`, {
       method: "DELETE",
       credentials: "include",
     })
@@ -79,7 +80,7 @@ export default function DeleteProducts() {
               }}
             >
               <img
-                src={`http://localhost:3001/media/${p.imgUrl}`}
+                src={`${API_BASE_URL}/media/${p.imgUrl}`}
                 alt={p.name}
                 style={{ width: "100%", maxHeight: "150px", objectFit: "cover"  }}
               />

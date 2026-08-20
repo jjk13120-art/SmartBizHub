@@ -3,6 +3,7 @@ import homepageImage from "./homepage.webp";
 import secondPageImage from "./secondpage.jpg";
 import logo from "./logo.png";
 import "./App.css";
+import { API_BASE_URL } from "./config";
 
 export function Home() {
   const aboutRef = useRef(null);
@@ -51,7 +52,7 @@ export function Home() {
     }
 
     try {
-      const res = await fetch("http://localhost:3001/offline-appointment", {
+      const res = await fetch(`${API_BASE_URL}/offline-appointment`, {
         method: "POST",
         credentials: "include",
       });
