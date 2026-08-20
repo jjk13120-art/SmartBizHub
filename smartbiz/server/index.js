@@ -413,7 +413,8 @@ productsByShop[p.shopId].push({
     const shopOwners = shops.map(s => {
   let imgPath = s.img;
   if (imgPath && imgPath.startsWith("shop/")) {
-    imgPath = `http://localhost:3001/${imgPath}`;
+    const baseUrl = process.env.BACKEND_URL || `${req.protocol}://${req.get('host')}`;
+    imgPath = `${baseUrl}/${imgPath}`;
   }
   return {
     id: s.shopId,
