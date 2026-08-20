@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/SmartBizHub/static/css/main.6f0847e1.css",
+    "main.js": "/SmartBizHub/static/js/main.9f1bee70.js",
+    "static/js/453.459026c0.chunk.js": "/SmartBizHub/static/js/453.459026c0.chunk.js",
+    "static/media/signup.jpg": "/SmartBizHub/static/media/signup.cbeb30d6a48f8368e974.jpg",
+    "static/media/login.jpg": "/SmartBizHub/static/media/login.8904e0c87c2d71e8282f.jpg",
+    "static/media/addpro.jpg": "/SmartBizHub/static/media/addpro.38f5f88b91fe7c633ec8.jpg",
+    "static/media/shopc.jpg": "/SmartBizHub/static/media/shopc.a907d7c2025e8668f0c5.jpg",
+    "static/media/user.gif": "/SmartBizHub/static/media/user.d3b1fefbcea9c6e8d213.gif",
+    "static/media/SIMg.webp": "/SmartBizHub/static/media/SIMg.497db773a94a9f4634f8.webp",
+    "static/media/secondpage.jpg": "/SmartBizHub/static/media/secondpage.a2dc8d808a2c8b65acd3.jpg",
+    "static/media/homepage.webp": "/SmartBizHub/static/media/homepage.dd04703fa8e265bce86e.webp",
+    "static/media/EASc.webp": "/SmartBizHub/static/media/EASc.06d2441f485978242c87.webp",
+    "static/media/DDBA.webp": "/SmartBizHub/static/media/DDBA.52c5a7bf2bb0e4851497.webp",
+    "static/media/SCCo.webp": "/SmartBizHub/static/media/SCCo.38c3c5eae2031d6486e5.webp",
+    "static/media/logo.png": "/SmartBizHub/static/media/logo.a4f5dfe6045b00e86abc.png",
+    "static/media/location-pin.png": "/SmartBizHub/static/media/location-pin.2b8af2d796e847c09e14.png",
+    "static/media/logo copy.png": "/SmartBizHub/static/media/logo copy.c664b8daf06be1bdf3b9.png",
+    "static/media/linkedin.png": "/SmartBizHub/static/media/linkedin.de942fc2a8c034e01dee.png",
+    "static/media/incoming-call.png": "/SmartBizHub/static/media/incoming-call.9b98c30d57c041a4427d.png",
+    "static/media/twitter.png": "/SmartBizHub/static/media/twitter.d55f3b9338f6b8dc7d79.png",
+    "static/media/facebook.png": "/SmartBizHub/static/media/facebook.cec7816e0e4be76696fa.png",
+    "index.html": "/SmartBizHub/index.html",
+    "main.6f0847e1.css.map": "/SmartBizHub/static/css/main.6f0847e1.css.map",
+    "main.9f1bee70.js.map": "/SmartBizHub/static/js/main.9f1bee70.js.map",
+    "453.459026c0.chunk.js.map": "/SmartBizHub/static/js/453.459026c0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6f0847e1.css",
+    "static/js/main.9f1bee70.js"
+  ]
+}
