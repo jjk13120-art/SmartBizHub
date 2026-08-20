@@ -1,6 +1,7 @@
 {
   "name": "smartbiz",
   "version": "0.1.0",
+  "homepage": "https://jjk13120-art.github.io/SmartBizHub",
   "private": true,
   "dependencies": {
     "@google/genai": "^1.7.0",
@@ -32,7 +33,9 @@
     "server": "node server/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -53,6 +56,7 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^10.0.5"
+    "concurrently": "^10.0.5",
+    "gh-pages": "^6.3.0"
   }
 }
