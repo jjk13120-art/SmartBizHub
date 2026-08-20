@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
+require("dotenv").config({ path: path.join(__dirname, "../.env") });
 
 const app = express();
 const PORT = 3001;
@@ -148,8 +149,8 @@ app.use(express.urlencoded({ extended: true }));
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "jigu4769@gmail.com",
-    pass: "thlq pfnd pwkg zznd"
+    user: process.env.EMAIL_USER || "your-email@gmail.com",
+    pass: process.env.EMAIL_PASS || "your-app-password"
   },
   tls: { rejectUnauthorized: false }
 });
@@ -183,7 +184,7 @@ app.post("/signupform", async (req, res) => {
   res.cookie("email", email, { maxAge: 604800000 });
 
   transporter.sendMail({
-    from: "jigu4769@gmail.com",
+    from: process.env.EMAIL_USER || "your-email@gmail.com",
     to: email,
     subject: "Signup Successful",
     text: `Hi ${fullname},\n\nThank you for signing up!`
@@ -211,7 +212,7 @@ app.post("/login", async (req, res) => {
     res.cookie("shopCreated", "true", { maxAge: 604800000 });
 
   transporter.sendMail({
-    from: "jigu4769@gmail.com",
+    from: process.env.EMAIL_USER || "your-email@gmail.com",
     to: email,
     subject: "Login Successful",
     text: `Hi ${user.fullname}, you're logged in.`
@@ -256,7 +257,7 @@ app.post("/createshop", uploadShop.single("img"), async (req, res) => {
     res.cookie("shopCreated", "true", { maxAge: 604800000 });
 
     transporter.sendMail({
-      from: "jigu4769@gmail.com",
+      from: process.env.EMAIL_USER || "your-email@gmail.com",
       to: userEmail,
       subject: "Shop Created",
       text: `Your shop "${name}" is created with ID: ${shopId}`
@@ -500,7 +501,7 @@ estimatedDeliveryDate.setDate(estimatedDeliveryDate.getDate() + selectedDays);
 const formattedDeliveryDate = estimatedDeliveryDate.toDateString(); 
 
       transporter.sendMail({
-        from: "jigu4769@gmail.com",
+        from: process.env.EMAIL_USER || "your-email@gmail.com",
         to: email,
         subject: "Order Receipt",
        text: `Thank you for your purchase! 🎉\n\nYour invoice is attached as a PDF.\n\nEstimated delivery date for your products is: ${formattedDeliveryDate}\n\nWe hope you enjoy your purchase!`,
@@ -776,7 +777,7 @@ app.post("/offline-appointment", async (req, res) => {
 
     // Send email notification
     await transporter.sendMail({
-      from: "jigu4769@gmail.com",
+      from: process.env.EMAIL_USER || "your-email@gmail.com",
       to: email,
       subject: "Offline Appointment Confirmation",
       text: `Your offline appointment is confirmed on ${formattedDate} at ${formattedTime}.

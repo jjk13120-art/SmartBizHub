@@ -75,7 +75,7 @@ const ContactPage = () => {
 
         <div style={styles.item}>
           <img src={emailIcon} alt="Email" style={styles.icon} />
-          <a href="mailto:jigu4769@gmail.com">supportsmartbiz@gmail.com</a>
+          <a href="mailto:supportsmartbiz@gmail.com">supportsmartbiz@gmail.com</a>
         </div>
 
         <div style={styles.item}>
