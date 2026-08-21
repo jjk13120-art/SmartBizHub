@@ -1,10 +1,11 @@
 // src/ShopPage.js
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./ShopPage.css";
 import { API_BASE_URL } from "./config";
 
 export default function ShopPage() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [cart, setCart] = useState({});
@@ -34,7 +35,7 @@ export default function ShopPage() {
     const email = getEmail();
     if (!email) {
       alert("Please sign up to purchase.");
-      window.location.href = "/form";
+      navigate("/form");
       return;
     }
 

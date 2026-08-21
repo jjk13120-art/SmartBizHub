@@ -42,7 +42,7 @@ export default function Profile() {
       if (!hasRedirected) {
         setHasRedirected(true);
         alert('Please sign up or log in first.');
-        window.location.href = '/form';
+        navigate('/form');
       }
     } else {
       setFullname(fullnameCookie);
@@ -67,7 +67,7 @@ export default function Profile() {
         })
         .catch(err => console.error(err));
     }
-  }, [hasRedirected]);
+  }, [hasRedirected, navigate]);
 
   const handleProfileUpload = async (event) => {
     const formData = new FormData();

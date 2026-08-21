@@ -19,12 +19,15 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 // ── Database ───────────────────────────────────────────
+console.log("Connecting to DB:", process.env.MONGO_URI || "mongodb://localhost:27017/stores");
 mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/stores", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
   .then(() => console.log("✅ MongoDB connected"))
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
+  .catch((err) => {
+    console.error("❌ MongoDB connection error:", err);
+  });
 
 // ── Multer (for future image uploads) ──────────────────
 const storage = multer.diskStorage({

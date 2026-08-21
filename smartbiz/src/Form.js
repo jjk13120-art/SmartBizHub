@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import a from './signup.jpg';
 import { API_BASE_URL } from "./config";
 
 export default function Form() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     fullname: "",
     email: "",
@@ -43,7 +45,7 @@ export default function Form() {
       });
 
       if (res.status === 200 && res.data.success) {
-        window.location.href = "/";
+        navigate("/");
       } else {
         setMessage(res.data.message || "Signup failed.");
       }
@@ -160,7 +162,7 @@ export default function Form() {
         />
         <button type="submit" style={buttonStyle}>Sign Up</button>
         {message && <p style={messageStyle}>{message}</p>}
-        <a href="/login" style={linkStyle}>Already have an account? Log in</a>
+        <Link to="/login" style={linkStyle}>Already have an account? Log in</Link>
       </form>
     </div>
   );

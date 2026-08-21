@@ -1,5 +1,5 @@
 import React, {useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './App.css';
 
 import ExploreInfo from './Explore.js';
@@ -61,7 +61,7 @@ function AppContent() {
       document.cookie = "email=; Max-Age=0; path=/";
       document.cookie = "password=; Max-Age=0; path=/";
       document.cookie = "shopCreated=; Max-Age=0; path=/";
-      window.location.href = "/";
+      navigate("/");
     };
 
     window.toggleMenu = toggleMenu;
@@ -73,7 +73,7 @@ function AppContent() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [navigate]);
 
   return (
     <div>
@@ -112,13 +112,13 @@ function AppContent() {
   {isLoggedIn && (
     <button onClick={() => window.logout?.()} className="btn-outline" title='Logout'>Logout</button>
   )}
-  <button onClick={() => (window.location.href = "http://localhost:3000/")} className="btn-outline" title='Get started'>
+  <button onClick={() => navigate("/auth")} className="btn-outline" title='Get started'>
     Get Started
   </button>
   <button className="btn-filled" onClick={() => navigate("/features")} title='Learn More'>Learn More</button>
 </div>
 
-        <a href="/profile" title='Profile'><img src={user} alt="user" width="50px" style={{backgroundColor:'white',borderRadius:"100px"}} /></a>
+        <Link to="/profile" title='Profile'><img src={user} alt="user" width="50px" style={{backgroundColor:'white',borderRadius:"100px"}} /></Link>
       </header>
 
       <Routes>
@@ -175,9 +175,9 @@ function AppContent() {
           <div className="footer-column">
             <h4>Company</h4>
             <ul>
-              <li><a href="/explore#about" className="li">About Us</a></li>
-              <li><a href="/features" className="li">Features</a></li>
-              <li><a href="/contact" className="li">Contact Us</a></li>
+              <li><Link to="/explore#about" className="li">About Us</Link></li>
+              <li><Link to="/features" className="li">Features</Link></li>
+              <li><Link to="/contact" className="li">Contact Us</Link></li>
             </ul>
           </div>
           <div className="footer-column">
@@ -188,7 +188,7 @@ function AppContent() {
     Appointment Management
   </Link>
 </li>
-              <li><a href="/inventory" className="li">Shops Management</a></li>
+              <li><Link to="/inventory" className="li">Shops Management</Link></li>
              
               <li> <Link to="/feedback" className='li' >Feedback</Link></li>
             </ul>
@@ -196,8 +196,8 @@ function AppContent() {
           <div className="footer-column">
             <h4>Resources</h4>
             <ul>
-              <li><a href="/price" className="li">Pricing</a></li>
-              <li><a href="/explore#blog" className="li">Blog</a></li>
+              <li><Link to="/price" className="li">Pricing</Link></li>
+              <li><Link to="/explore#blog" className="li">Blog</Link></li>
             </ul>
           </div>
           <div className="footer-column subscribe">

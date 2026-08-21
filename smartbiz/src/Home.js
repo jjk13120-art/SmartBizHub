@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import homepageImage from "./homepage.webp";
 import secondPageImage from "./secondpage.jpg";
 import logo from "./logo.png";
@@ -6,6 +7,7 @@ import "./App.css";
 import { API_BASE_URL } from "./config";
 
 export function Home() {
+  const navigate = useNavigate();
   const aboutRef = useRef(null);
   const topRef = useRef(null);
 
@@ -37,17 +39,17 @@ export function Home() {
   const handleCreateShop = () => {
     if (!isSignedIn) {
       showToast("Please sign up first to create a shop.", "error");
-      window.location.href = "/form";
+      navigate("/form");
       return;
     }
-    window.location.href = "/createshop";
+    navigate("/createshop");
   };
 
   // ---- NEW FUNCTIONS FOR APPOINTMENTS ----
   const handleOfflineAppointment = async () => {
     if (!isSignedIn) {
       showToast("Please login to book an appointment.", "error");
-      window.location.href = "/login";
+      navigate("/login");
       return;
     }
 
@@ -71,10 +73,10 @@ export function Home() {
   const handleOnlineAppointment = () => {
     if (!isSignedIn) {
       showToast("Please login to book an appointment.", "error");
-      window.location.href = "/login";
+      navigate("/login");
       return;
     }
-    window.location.href = "/contact";
+    navigate("/contact");
   };
   
 useEffect(() => {
@@ -231,10 +233,10 @@ useEffect(() => {
 
             {!isSignedIn && (
               <div className="email-signup" style={{ marginTop: "20px" }}>
-                <button onClick={() => (window.location.href = "/form")}>
+                <button onClick={() => navigate("/form")}>
                   Sign up
                 </button>
-                <button onClick={() => (window.location.href = "/login")}>
+                <button onClick={() => navigate("/login")}>
                   Login
                 </button>
               </div>

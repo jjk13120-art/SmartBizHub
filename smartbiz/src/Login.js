@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import a from './login.jpg';
 import { API_BASE_URL } from "./config";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
 
   useEffect(() => {
     // Optional: redirect if already logged in
     const email = document.cookie.split("; ").find(row => row.startsWith("email="));
-    if (email) window.location.href = "/dashboard";
-  }, []);
+    if (email) navigate("/profile");
+  }, [navigate]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -31,7 +33,7 @@ export default function Login() {
       });
 
       if (res.status === 200 && res.data.success) {
-        window.location.href = "/";
+        navigate("/");
       } else {
         setMessage(res.data.message || "Invalid email or password.");
       }
@@ -67,7 +69,7 @@ export default function Login() {
         />
         <button type="submit" style={styles.button}>Login</button>
         {message && <p style={styles.error}>{message}</p>}
-        <a href="/form" style={styles.link}>Don't have an account? Sign up</a>
+        <Link to="/form" style={styles.link}>Don't have an account? Sign up</Link>
       </form>
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const styles = {
   page: {
@@ -115,7 +116,7 @@ const PricingPage = () => {
             <li>Custom integrations</li>
             <li>Dedicated account manager</li>
           </ul>
-          <a href="/contact" style={styles.button}>Contact Sales</a>
+          <Link to="/contact" style={styles.button}>Contact Sales</Link>
         </div>
       </div>
     </div>
