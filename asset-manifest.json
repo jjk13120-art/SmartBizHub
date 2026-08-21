@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/SmartBizHub/static/css/main.6f0847e1.css",
-    "main.js": "/SmartBizHub/static/js/main.9f1bee70.js",
+    "main.js": "/SmartBizHub/static/js/main.15371ecf.js",
     "static/js/453.459026c0.chunk.js": "/SmartBizHub/static/js/453.459026c0.chunk.js",
     "static/media/signup.jpg": "/SmartBizHub/static/media/signup.cbeb30d6a48f8368e974.jpg",
     "static/media/login.jpg": "/SmartBizHub/static/media/login.8904e0c87c2d71e8282f.jpg",
@@ -23,11 +23,11 @@
     "static/media/facebook.png": "/SmartBizHub/static/media/facebook.cec7816e0e4be76696fa.png",
     "index.html": "/SmartBizHub/index.html",
     "main.6f0847e1.css.map": "/SmartBizHub/static/css/main.6f0847e1.css.map",
-    "main.9f1bee70.js.map": "/SmartBizHub/static/js/main.9f1bee70.js.map",
+    "main.15371ecf.js.map": "/SmartBizHub/static/js/main.15371ecf.js.map",
     "453.459026c0.chunk.js.map": "/SmartBizHub/static/js/453.459026c0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6f0847e1.css",
-    "static/js/main.9f1bee70.js"
+    "static/js/main.15371ecf.js"
   ]
 }
