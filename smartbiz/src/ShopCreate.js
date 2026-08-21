@@ -39,6 +39,7 @@ export default function CreateShop() {
       });
 
       if (res.status === 200 && res.data.success) {
+        document.cookie = "shopCreated=true; max-age=604800; path=/";
         setMessage("✅ Shop created successfully!");
         navigate("/");
       } else {

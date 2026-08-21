@@ -143,7 +143,17 @@ const Shop = mongoose.model("Shop", shopSchema);
 const Product = mongoose.model("Product", productSchema);
 
 // ── Middleware ────────────────────────────────────────
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({
+  origin: (origin, callback) => {
+    const allowed = ["http://localhost:3000", "https://jjk13120-art.github.io"];
+    if (!origin || allowed.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -183,8 +193,8 @@ app.post("/signupform", async (req, res) => {
 
   await user.save();
 
-  res.cookie("fullname", fullname, { maxAge: 604800000 });
-  res.cookie("email", email, { maxAge: 604800000 });
+  res.cookie("fullname", fullname, { maxAge: 604800000, secure: true, sameSite: "none" });
+  res.cookie("email", email, { maxAge: 604800000, secure: true, sameSite: "none" });
 
   transporter.sendMail({
     from: process.env.EMAIL_USER || "your-email@gmail.com",
@@ -193,7 +203,10 @@ app.post("/signupform", async (req, res) => {
     text: `Hi ${fullname},\n\nThank you for signing up!`
   });
 
-  res.status(200).json({ success: true });
+  res.status(200).json({ 
+    success: true, 
+    user: { fullname, email } 
+  });
 });
 
 
@@ -207,12 +220,13 @@ app.post("/login", async (req, res) => {
   if (!user || user.password !== password)
     return res.status(401).json({ message: "Invalid login" });
 
-  res.cookie("fullname", user.fullname, { maxAge: 604800000 });
-  res.cookie("email", user.email, { maxAge: 604800000 });
+  res.cookie("fullname", user.fullname, { maxAge: 604800000, secure: true, sameSite: "none" });
+  res.cookie("email", user.email, { maxAge: 604800000, secure: true, sameSite: "none" });
 
   const existingShops = await Shop.find({ ownerEmail: email });
-  if (existingShops.length > 0)
-    res.cookie("shopCreated", "true", { maxAge: 604800000 });
+  const hasCreatedShop = existingShops.length > 0;
+  if (hasCreatedShop)
+    res.cookie("shopCreated", "true", { maxAge: 604800000, secure: true, sameSite: "none" });
 
   transporter.sendMail({
     from: process.env.EMAIL_USER || "your-email@gmail.com",
@@ -221,7 +235,14 @@ app.post("/login", async (req, res) => {
     text: `Hi ${user.fullname}, you're logged in.`
   });
 
-  res.json({ success: true });
+  res.json({ 
+    success: true, 
+    user: { 
+      fullname: user.fullname, 
+      email: user.email, 
+      shopCreated: hasCreatedShop 
+    } 
+  });
 });
 
 // ── Create Shop ────────────────────────────────────────
@@ -257,7 +278,7 @@ app.post("/createshop", uploadShop.single("img"), async (req, res) => {
     await newShop.save();
     user.shops.push(shopId);
     await user.save();
-    res.cookie("shopCreated", "true", { maxAge: 604800000 });
+    res.cookie("shopCreated", "true", { maxAge: 604800000, secure: true, sameSite: "none" });
 
     transporter.sendMail({
       from: process.env.EMAIL_USER || "your-email@gmail.com",

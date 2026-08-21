@@ -112,7 +112,7 @@ function AppContent() {
   {isLoggedIn && (
     <button onClick={() => window.logout?.()} className="btn-outline" title='Logout'>Logout</button>
   )}
-  <button onClick={() => navigate("/auth")} className="btn-outline" title='Get started'>
+  <button onClick={() => navigate("/form")} className="btn-outline" title='Get started'>
     Get Started
   </button>
   <button className="btn-filled" onClick={() => navigate("/features")} title='Learn More'>Learn More</button>

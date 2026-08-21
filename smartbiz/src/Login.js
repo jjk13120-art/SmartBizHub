@@ -33,6 +33,12 @@ export default function Login() {
       });
 
       if (res.status === 200 && res.data.success) {
+        const { fullname, email, shopCreated } = res.data.user;
+        document.cookie = `fullname=${encodeURIComponent(fullname)}; max-age=604800; path=/`;
+        document.cookie = `email=${encodeURIComponent(email)}; max-age=604800; path=/`;
+        if (shopCreated) {
+          document.cookie = `shopCreated=true; max-age=604800; path=/`;
+        }
         navigate("/");
       } else {
         setMessage(res.data.message || "Invalid email or password.");
