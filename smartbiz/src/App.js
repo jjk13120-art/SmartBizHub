@@ -1,5 +1,5 @@
 import React, {useEffect, useState } from 'react';
-import { HashRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
 import './App.css';
 
 import ExploreInfo from './Explore.js';
@@ -32,6 +32,7 @@ import instaIcon from './insta.png';
 
 function AppContent() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [visible, setVisible] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -73,7 +74,7 @@ function AppContent() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [navigate]);
+  }, [location, navigate]);
 
   return (
     <div>
@@ -109,12 +110,13 @@ function AppContent() {
         </nav>
 
         <div className="buttons" id="nav-buttons">
-  {isLoggedIn && (
+  {isLoggedIn ? (
     <button onClick={() => window.logout?.()} className="btn-outline" title='Logout'>Logout</button>
+  ) : (
+    <button onClick={() => navigate("/form")} className="btn-outline" title='Get started'>
+      Get Started
+    </button>
   )}
-  <button onClick={() => navigate("/form")} className="btn-outline" title='Get started'>
-    Get Started
-  </button>
   <button className="btn-filled" onClick={() => navigate("/features")} title='Learn More'>Learn More</button>
 </div>
 
